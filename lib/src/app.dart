@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sunset_time/src/controller/sunsetTime_controller.dart';
+import 'package:sunset_time/src/geo/loading.dart';
 
 class App extends GetView<SunSetTimeController> {
   const App({Key? key}) : super(key: key);
@@ -40,6 +41,7 @@ class App extends GetView<SunSetTimeController> {
           var info = controller.sunsetTime.value;
           return Column(
             children: [
+              Loading(),
               infoWidget("날짜", info.locdate ?? ''),
               infoWidget("일출", info.sunrise ?? ''),
               infoWidget("일몰", info.sunset ?? ''),
