@@ -25,9 +25,18 @@ class SunsetTimeRepository {
     );
   }
   Future<SunSetTimeModel> fetchSunSetTime() async {
-    var response = await _dio
-        .get('/B090041/openapi/service/RiseSetInfoService/getLCRiseSetInfo');
-    final document = XmlDocument.parse(response.data);
+
+    print("hello");
+    var locList = await getLocation();
+    String lati = locList.split(" ")[0];
+    String long = locList.split(" ")[1];
+    print(long);
+    print(lati);
+    var response = await get(Uri.parse(
+        'http://apis.data.go.kr/B090041/openapi/service/RiseSetInfoService/getLCRiseSetInfo?ServiceKey=cR1YY2ji2HzxD35o6BnH7GgH46ViNYaXmUFWJ%2FKKXc%2BMYcZNA51AWWyKOPorXp8pHJ6gBLiaXzJ809NDVwgNSg%3D%3D&locdate=20210809&longitude=${long}&latitude=${lati}&dnYn=Y'));
+    print(response.body);
+    final document = XmlDocument.parse(response.body);
+
     final results = document.findAllElements('item');
     if (results.isNotEmpty) {
       return SunSetTimeModel.fromXml(results.first);
