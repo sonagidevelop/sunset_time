@@ -49,8 +49,9 @@ class SunsetTimeRepository {
     String lati = locList.split(" ")[1];
     print(long);
     print(lati);
+    print(locList);
     var response = await get(Uri.parse(
-        'http://apis.data.go.kr/B090041/openapi/service/RiseSetInfoService/getLCRiseSetInfo?ServiceKey=cR1YY2ji2HzxD35o6BnH7GgH46ViNYaXmUFWJ%2FKKXc%2BMYcZNA51AWWyKOPorXp8pHJ6gBLiaXzJ809NDVwgNSg%3D%3D&locdate=20210809&longitude=${long}&latitude=${lati}&dnYn=Y'));
+        'http://apis.data.go.kr/B090041/openapi/service/RiseSetInfoService/getLCRiseSetInfo?ServiceKey=cR1YY2ji2HzxD35o6BnH7GgH46ViNYaXmUFWJ%2FKKXc%2BMYcZNA51AWWyKOPorXp8pHJ6gBLiaXzJ809NDVwgNSg%3D%3D&locdate=${dateStr}&longitude=${lati}&latitude=${long}&dnYn=Y'));
     print(response.body);
     final document = XmlDocument.parse(response.body);
     final results = document.findAllElements('item');
