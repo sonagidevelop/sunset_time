@@ -36,6 +36,7 @@ class App extends GetView<SunSetTimeController> {
         centerTitle: true,
       ),
       body: Container(
+        height: 300,
         padding: const EdgeInsets.all(15),
         child: Obx(() {
           var info = controller.sunsetTime.value;

@@ -32,8 +32,7 @@ class _LoadingState extends State<Loading> {
       return [err];
     }
   }
-  
-  
+
   Future<List> fetchData() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -68,8 +67,8 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
+    return Container(
+      height: 150,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -112,6 +111,6 @@ class _LoadingState extends State<Loading> {
           )
         ],
       ),
-    ));
+    );
   }
 }
