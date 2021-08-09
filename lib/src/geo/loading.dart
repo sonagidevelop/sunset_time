@@ -68,7 +68,7 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: 80,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
