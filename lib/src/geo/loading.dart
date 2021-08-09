@@ -13,23 +13,27 @@ class _LoadingState extends State<Loading> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getLocation();
+    Future<List> posi = getLocation();
   }
 
-  void getLocation() async {
+  Future<List> getLocation() async {
+    String lati = '';
+    String long = '';
     try {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
-      String lat = position.latitude.toString();
-      String lon = position.longitude.toString();
-      print(position);
-      print(lat);
-      print(lon);
+      lati = position.latitude.toString();
+      long = position.longitude.toString();
+
+      return [lati, long];
     } catch (e) {
+      String err = 'error';
       print("there was an error");
+      return [err];
     }
   }
-
+  
+  
   Future<List> fetchData() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
